@@ -1,187 +1,125 @@
-/* Reset básico para remover margens e paddings padrão */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Estilos globais */
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    font-size: 20px;
 }
-
-/* Navbar fixa no topo */
-.navbar {
-    background-color: #333;
-    color: #fff;
+header {
+    background-color: #222;
+    padding: 1rem;
     position: fixed;
-    top: 0;
     width: 100%;
-    padding: 10px 0;
+    top: 0;
+    left: 0;
     z-index: 1000;
 }
-
-.navbar ul {
+nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    padding: 0;
 }
-
-.navbar ul li {
+nav ul li {
     margin: 0 15px;
 }
-
-.navbar ul li a {
-    color: #fff;
+nav ul li a {
+    color: white;
     text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s;
+    font-weight: bold;
+    font-size: 22px;
 }
-
-.navbar ul li a:hover {
-    color: #ddd;
+.section {
+    padding: 100px 20px;
 }
-
-/* Estilos das seções */
-main {
-    margin-top: 60px; /* Espaço para o menu fixo */
-}
-
-section {
-    padding: 60px 20px;
-    min-height: 100vh;
-}
-
 #inicio {
-    background-color: #f4f4f4;
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    color: white;
+    padding: 150px 20px;
+    text-align: center;
 }
-
-#sobre-mim {
-    background-color: #e2e2e2;
-}
-
-#projetos {
-    background-color: #ccc;
-}
-
-#contato {
-    background-color: #aaa;
-}
-
-/* Estilos para o carrossel */
-.carousel-container {
-    position: relative;
-    width: 80%;
-    max-width: 800px;
-    overflow: hidden;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.carousel {
+#sobre {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px; /* Aumenta o espaçamento entre a foto e o texto */
+    padding: 100px 20px;
+    background: white;
+    max-width: 900px;
+    margin: auto;
+    text-align: left;
+}
+.sobre-foto {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.sobre-texto {
+    max-width: 500px;
+    font-size: 20px;
+    line-height: 1.5; /* Aumenta o espaço entre as linhas do texto */
+}
+.carousel {
+    position: relative;
+    width: 500px;
+    height: 250px;
+    margin: auto;
+    overflow: hidden;
+}
+.carousel-container {
+    display: flex;
+    width: 1500px;
     transition: transform 0.5s ease-in-out;
 }
-
-.carousel-item {
-    min-width: 100%;
+.carousel-container img {
+    width: 500px;
+    height: 250px;
+    flex-shrink: 0;
+    border-radius: 10px;
 }
-
-.carousel-item img {
-    width: 100%;
-    display: block;
-}
-
-#prevBtn, #nextBtn {
+.prev, .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
-    border-radius: 50%;
 }
-
-#prevBtn {
+.prev {
     left: 10px;
 }
-
-#nextBtn {
+.next {
     right: 10px;
 }
-
-#prevBtn:hover, #nextBtn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Estilos para o formulário de contato */
 form {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 600px;
+    max-width: 400px;
     margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-form input, form textarea {
-    margin-bottom: 15px;
+form input, form textarea, form button {
+    margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 20px;
 }
-
 form button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
+    background: #ff5e62;
+    color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 20px;
 }
-
 form button:hover {
-    background-color: #555;
+    background: #ff9966;
 }
-
-#formMessage {
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-/* Estilos para animação ao rolar a página */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .navbar ul {
-        flex-direction: column;
-    }
-
-    .navbar ul li {
-        margin: 10px 0;
-    }
-}
-
-
-
- 
-
- 
-
