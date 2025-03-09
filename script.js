@@ -1,77 +1,45 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Navegação Suave entre Seções
-    const links = document.querySelectorAll('.navbar a');
-    for (const link of links) {
-        link.addEventListener('click', smoothScroll);
-    }
-    function smoothScroll(event) {
-        event.preventDefault();
-        const targetId = event.currentTarget.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        window.scrollTo({
-            top: targetSection.offsetTop - 50, // Ajuste para considerar a altura do menu
-            behavior: 'smooth'
-        });
-    }
-
-    // Carrossel de Imagens na Seção "Projetos"
-    const carousel = document.querySelector('.carousel');
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const totalItems = carouselItems.length;
-    let currentIndex = 0;
-    document.getElementById('nextBtn').addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % totalItems;
-        updateCarousel();
-    });
-    document.getElementById('prevBtn').addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        updateCarousel();
-    });
-    function updateCarousel() {
-        const offset = -currentIndex * 100;
-        carousel.style.transform = `translateX(${offset}%)`;
-    }
-
-    // Formulário de Contato com Validação de Dados
-    const form = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const nome = document.getElementById('nome').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const mensagem = document.getElementById('mensagem').value.trim();
-        if (nome === '' || email === '' || mensagem === '') {
-            formMessage.textContent = 'Por favor, preencha todos os campos.';
-            formMessage.style.color = 'red';
-        } else if (!validateEmail(email)) {
-            formMessage.textContent = 'Por favor, insira um email válido.';
-            formMessage.style.color = 'red';
-        } else {
-            formMessage.textContent = 'Mensagem enviada com sucesso!';
-            formMessage.style.color = 'green';
-            form.reset();
+// script.js
+document.addEventListener("DOMContentLoaded", function() {
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
+    const carousel = document.querySelector(".carousel-container");
+    const images = document.querySelectorAll(".carousel-container img");
+    let index = 0;
+    const total = images.length;
+    const imageWidth = 500; // Largura de cada imagem
+    
+    function moveCarousel(direction) {
+        index += direction;
+        if (index < 0) {
+            index = total - 1;
+        } else if (index >= total) {
+            index = 0;
         }
-    });
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
+        carousel.style.transform = `translateX(${-index * imageWidth}px)`;
     }
+    
+    prevButton.addEventListener("click", () => moveCarousel(-1));
+    nextButton.addEventListener("click", () => moveCarousel(1));
+    
+    // Auto deslizar a cada 3 segundos
+    setInterval(() => moveCarousel(1), 3000);
+    
+    // Validação do formulário
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Mensagem enviada com sucesso!");
+        this.reset();
+    });
 
-    // Animação ao Rolar a Página (Scroll Animation)
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    function checkVisibility() {
-        const windowHeight = window.innerHeight;
-        animatedElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            if (elementTop < windowHeight - 50) {
-                element.classList.add('visible');
+    // Animação ao rolar a página
+    window.addEventListener("scroll", function() {
+        document.querySelectorAll(".section").forEach(section => {
+            const position = section.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+            if (position < screenPosition) {
+                section.style.opacity = "1";
+                section.style.transform = "translateY(0)";
             }
         });
-    }
-    window.addEventListener('scroll', checkVisibility);
-    checkVisibility(); // Verifica a visibilidade ao carregar a página
+    });
 });
-
-
-
-
