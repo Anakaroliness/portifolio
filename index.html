@@ -1,65 +1,66 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio</title>
+    <title>Portfólio | Ana Karoline</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar">
+        <nav>
             <ul>
                 <li><a href="#inicio">Início</a></li>
-                <li><a href="#sobre-mim">Sobre Mim</a></li>
+                <li><a href="#sobre">Sobre Mim</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
-
-    <main>
-        <section id="inicio">
-            <h1>Bem-vindo ao Meu Portfólio</h1>
-            <p>Introdução sobre você ou seu trabalho.</p>
-        </section>
-
-        <section id="sobre-mim">
+    
+    <section id="inicio" class="section">
+        <h1>Olá, sou Ana Karoline</h1>
+        <p>Desenvolvedora apaixonada por tecnologia e design.</p>
+    </section>
+    
+    <section id="sobre" class="section">
+        <img src="minha-foto.jpg" alt="Foto de Ana Karoline" class="sobre-foto">
+        <div class="sobre-texto">
             <h2>Sobre Mim</h2>
-            <p>Informações sobre sua formação, experiência e habilidades.</p>
-        </section>
-
-        <section id="projetos">
-            <h2>Projetos</h2>
+            <p>Tenho experiência na criação de websites responsivos e interativos, utilizando tecnologias modernas como HTML, CSS e JavaScript.</p>
+        </div>
+    </section>
+    
+    <section id="projetos" class="section">
+        <h2>Projetos</h2>
+        <div class="carousel">
+            <button class="prev">&#10094;</button>
             <div class="carousel-container">
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <img src="projeto1.jpg" alt="Projeto 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="projeto2.jpg" alt="Projeto 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="projeto3.jpg" alt="Projeto 3">
-                    </div>
-                </div>
-                <button id="prevBtn">&#10094;</button>
-                <button id="nextBtn">&#10095;</button>
+                <img src="projeto1.jpg" alt="Projeto 1">
+                <img src="projeto2.jpg" alt="Projeto 2">
+                <img src="projeto3.jpg" alt="Projeto 3">
             </div>
-        </section>
-
-        <section id="contato">
-            <h2>Contato</h2>
-            <form id="contactForm">
-                <input type="text" id="nome" name="nome" placeholder="Seu Nome" required>
-                <input type="email" id="email" name="email" placeholder="Seu Email" required>
-                <textarea id="mensagem" name="mensagem" placeholder="Sua Mensagem" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-            <p id="formMessage"></p>
-        </section>
-    </main>
+            <button class="next">&#10095;</button>
+        </div>
+    </section>
+    
+    <section id="contato" class="section">
+        <h2>Contato</h2>
+        <form id="contactForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
 </body>
 </html>
 
